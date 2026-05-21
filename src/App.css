@@ -1,0 +1,17 @@
+body {
+    background: #111;
+    color: white;
+    font-family: Arial;
+    padding: 20px;
+}
+
+img {
+    object-fit: cover;
+}
+
+iframe {
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
