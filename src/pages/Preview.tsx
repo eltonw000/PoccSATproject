@@ -1,21 +1,6 @@
-type AppData = {
-    app_highlight: {
-        title: string;
-        author: string;
-        description: string;
-        rating: number;
-        downloads: string;
-        content_rating: {
-            text: string;
-        };
-        video: string;
-        images: string[];
-    };
-};
-
 import { useEffect, useState } from "react";
 function Preview() {
-    const [data, setData] = useState<AppData | null>(null);
+    const [data, setData] = useState(null)
     const API_KEY = "243e64e5ee4e5c98c4a185de5fa8381613bc5cdb789982867797bac237b319ed" 
     const ENDPOINT = "https://serpapi.com/search"
     const params = {
@@ -42,15 +27,7 @@ function Preview() {
         return <h1>Loading...</h1>
     }
 
-    const app = data?.app_highlight;
-
-    console.log("DATA:", data);
-console.log("APP:", app);
-
-if (!app) {
-    return <h1>API structure mismatch (check console)</h1>;
-}
-
+    const app = data.app_highlight;
     const moreGames = [
     {
         title: "Clash Royale",
