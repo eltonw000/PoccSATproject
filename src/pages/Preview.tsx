@@ -20,17 +20,11 @@ function Preview() {
 
     const serpUrl = `${ENDPOINT}?${queryString}`;
 
-    console.log("REQUEST URL:", serpUrl);
-
-    fetch("https://corsproxy.io/?" + encodeURIComponent(serpUrl))
-        .then((res) => {
-            console.log("STATUS:", res.status);
-            return res.text(); // IMPORTANT DEBUG STEP
-        })
-        .then((text) => {
-            console.log("RAW RESPONSE:", text);
-            const json = JSON.parse(text);
-            setData(json);
+    fetch(serpUrl)
+        .then((res) => res.json())
+        .then((result) => {
+            console.log("API RESULT:", result);
+            setData(result);
         })
         .catch((err) => {
             console.error("FETCH FAILED:", err);
