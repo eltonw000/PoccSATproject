@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 function Preview() {
-    const [data, setData] = useState(null)
+    const [data, setData] = useState<AppData | null>(null);
     const API_KEY = "243e64e5ee4e5c98c4a185de5fa8381613bc5cdb789982867797bac237b319ed" 
     const ENDPOINT = "https://serpapi.com/search"
     const params = {
@@ -251,7 +251,7 @@ function Preview() {
                 }}
             >
                 {app.images.map(
-                    (img: string, index: number) => (
+                    (img, index) => (
                         <img
                             key={index}
                             src={img}
