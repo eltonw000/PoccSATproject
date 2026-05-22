@@ -48,7 +48,7 @@ function Preview() {
         return <h1>Loading...</h1>
     }
 
-    const app = data?.app_highlight;
+    const app = data.app_highlight;
     const moreGames = [
     {
         title: "Clash Royale",
