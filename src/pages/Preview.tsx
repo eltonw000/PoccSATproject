@@ -1,17 +1,4 @@
-type AppData = {
-    app_highlight: {
-        title: string;
-        author: string;
-        rating: number;
-        downloads: string;
-        description: string;
-        video: string;
-        images: string[];
-        content_rating: {
-            text: string;
-        };
-    };
-};
+
 
 import { useEffect, useState } from "react";
 function Preview() {
