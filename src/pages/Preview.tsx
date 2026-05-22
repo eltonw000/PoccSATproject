@@ -43,6 +43,14 @@ function Preview() {
     }
 
     const app = data?.app_highlight;
+
+    console.log("DATA:", data);
+console.log("APP:", app);
+
+if (!app) {
+    return <h1>API structure mismatch (check console)</h1>;
+}
+
     const moreGames = [
     {
         title: "Clash Royale",
