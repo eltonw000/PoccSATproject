@@ -251,7 +251,7 @@ function Preview() {
                 }}
             >
                 {app.images.map(
-                    (img, index) => (
+                    (img: string, index: number) => (
                         <img
                             key={index}
                             src={img}
