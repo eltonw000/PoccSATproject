@@ -15,7 +15,7 @@ type AppData = {
 
 import { useEffect, useState } from "react";
 function Preview() {
-    const [data, setData] = useState<AppData | null>(null);
+    const [data, setData] = useState<any>(null);
     const API_KEY = "243e64e5ee4e5c98c4a185de5fa8381613bc5cdb789982867797bac237b319ed" 
     const ENDPOINT = "https://serpapi.com/search"
     const params = {
@@ -26,17 +26,23 @@ function Preview() {
     }
 
  useEffect(() => {
-        const queryString = new URLSearchParams({ ...params, api_key: API_KEY }).toString()
-        const serpUrl = `${ENDPOINT}?${queryString}`
+    const queryString = new URLSearchParams({
+        ...params,
+        api_key: API_KEY
+    }).toString();
 
-       fetch("https://corsproxy.io/?" + encodeURIComponent(serpUrl))
-            .then((res) => res.json())
-            .then((result) =>{
-                console.log(result)
-                setData(result)
-            })
-            .catch((err) => console.error("Error:", err))
-        }, [])
+    const serpUrl = `${ENDPOINT}?${queryString}`;
+
+    fetch("https://corsproxy.io/?" + encodeURIComponent(serpUrl))
+        .then((res) => res.json())
+        .then((result) => {
+            console.log("API RESULT:", result);
+            setData(result);
+        })
+        .catch((err) => {
+            console.error("FETCH FAILED:", err);
+        });
+}, []);
 
     if (!data) {
         return <h1>Loading...</h1>
