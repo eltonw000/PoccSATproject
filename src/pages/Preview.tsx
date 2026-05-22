@@ -15,16 +15,22 @@ function Preview() {
  useEffect(() => {
     const queryString = new URLSearchParams({
         ...params,
-        api_key: API_KEY
+        api_key: API_KEY,
     }).toString();
 
     const serpUrl = `${ENDPOINT}?${queryString}`;
 
+    console.log("REQUEST URL:", serpUrl);
+
     fetch("https://corsproxy.io/?" + encodeURIComponent(serpUrl))
-        .then((res) => res.json())
-        .then((result) => {
-            console.log("API RESULT:", result);
-            setData(result);
+        .then((res) => {
+            console.log("STATUS:", res.status);
+            return res.text(); // IMPORTANT DEBUG STEP
+        })
+        .then((text) => {
+            console.log("RAW RESPONSE:", text);
+            const json = JSON.parse(text);
+            setData(json);
         })
         .catch((err) => {
             console.error("FETCH FAILED:", err);
