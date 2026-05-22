@@ -1,3 +1,18 @@
+type AppData = {
+    app_highlight: {
+        title: string;
+        author: string;
+        description: string;
+        rating: number;
+        downloads: string;
+        content_rating: {
+            text: string;
+        };
+        video: string;
+        images: string[];
+    };
+};
+
 import { useEffect, useState } from "react";
 function Preview() {
     const [data, setData] = useState<AppData | null>(null);
