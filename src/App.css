@@ -1,17 +1,157 @@
 body {
-    background: #111;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom right,
+        #0f172a,
+        #111827
+    );
+    padding: 40px;
     color: white;
-    font-family: Arial;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-img {
-    object-fit: cover;
+.search-bar {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    width: 1200px;
 }
 
-iframe {
+.search-input {
+    flex: 1;
+    padding: 15px;
+    border-radius: 12px;
     border: none;
-    border-radius: 10px;
+    font-size: 18px;
+    background-color: #1e293b;
+    color: white;
+}
+
+.search-button {
+    padding: 15px 25px;
+    background-color: #38bdf8;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card {
+    width: 1200px;
+    background-color: #1e293b;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 25px
+        rgba(0, 0, 0, 0.5);
+    border: 2px solid #334155;
+}
+
+.top-section {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.info {
+    flex: 1;
+}
+
+.title {
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+.author {
+    font-size: 20px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.description {
+    line-height: 1.8;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.green {
+    color: #4ade80;
+}
+
+.yellow {
+    color: #facc15;
+}
+
+.pink {
+    color: #fb7185;
+}
+
+.install-button {
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.video {
+    border-radius: 20px;
+    border: none;
+}
+
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #c084fc;
+    font-size: 30px;
+}
+
+.image-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+}
+
+.preview-image {
+    border-radius: 20px;
+    box-shadow: 0 4px 15px
+        rgba(0, 0, 0, 0.4);
+}
+
+.games-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
     margin-top: 20px;
 }
 
+.game-card {
+    min-width: 200px;
+    background-color: #0f172a;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.game-image {
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
