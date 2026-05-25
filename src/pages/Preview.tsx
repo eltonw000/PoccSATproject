@@ -70,7 +70,11 @@ function Preview() {
     typeof data === "object" &&
     !data.app_highlight
 ) {
-    return <h1>No app found</h1>;
+    return (
+        <pre>
+            {JSON.stringify(data, null, 2)}
+        </pre>
+    );
 }
 
     const app = data?.app_highlight;
