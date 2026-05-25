@@ -9,7 +9,7 @@ function Preview() {
     const ENDPOINT = "https://serpapi.com/search";
 
     const params = {
-        engine: "google_play",
+        engine: "google_play_games",
         q: "clash of clans",
         hl: "en",
         gl: "us",
@@ -73,7 +73,7 @@ function Preview() {
     return <h1>No app found</h1>;
 }
 
-    const app = data.app_highlight;
+    const app = data?.app_highlight;
 
     const moreGames = [
         {
@@ -182,7 +182,7 @@ function Preview() {
                 </h2>
 
                 <div className="image-row">
-                    {app.images?.map(
+                    {app.images?.slice(0, 5).map(
                         (
                             img: string,
                             index: number
