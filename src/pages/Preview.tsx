@@ -16,27 +16,47 @@ function Preview() {
     };
 
     useEffect(() => {
-        const queryString = new URLSearchParams({
-            ...params,
-            api_key: API_KEY,
-        }).toString();
+    const queryString = new URLSearchParams({
+        ...params,
+        api_key: API_KEY,
+    }).toString();
 
-        const serpUrl = `${ENDPOINT}?${queryString}`;
+    const serpUrl = `${ENDPOINT}?${queryString}`;
 
-        fetch(
-            "https://corsproxy.io/?" +
-                encodeURIComponent(serpUrl)
-        )
-            .then((res) => res.json())
-            .then((result) => {
-                console.log("API RESULT:", result);
-                setData(result);
-            })
-            .catch((err) => {
-                console.error("FETCH FAILED:", err);
+    fetch(
+        "https://corsproxy.io/?" +
+            encodeURIComponent(serpUrl)
+    )
+        .then(async (res) => {
+            const text = await res.text();
+
+            try {
+                const json = JSON.parse(text);
+
+                console.log(
+                    "API RESULT:",
+                    json
+                );
+
+                setData(json);
+            } catch {
+                console.log(
+                    "NOT JSON:",
+                    text
+                );
+
                 setData("error");
-            });
-    }, []);
+            }
+        })
+        .catch((err) => {
+            console.error(
+                "FETCH FAILED:",
+                err
+            );
+
+            setData("error");
+        });
+}, []);
 
     if (data === null) {
         return <h1>Loading...</h1>;
