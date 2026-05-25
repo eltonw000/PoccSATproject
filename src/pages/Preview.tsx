@@ -9,7 +9,7 @@ function Preview() {
     const ENDPOINT = "https://serpapi.com/search";
 
     const params = {
-        engine: "google_play_games",
+        engine: "google_play",
         q: "clash of clans",
         hl: "en",
         gl: "us",
