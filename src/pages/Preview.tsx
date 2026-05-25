@@ -24,8 +24,7 @@ function Preview() {
     const serpUrl = `${ENDPOINT}?${queryString}`;
 
     fetch(
-        "https://corsproxy.io/?" +
-            encodeURIComponent(serpUrl)
+        (serpUrl)
     )
         .then(async (res) => {
             const text = await res.text();
