@@ -66,9 +66,12 @@ function Preview() {
         return <h1>Failed to fetch data</h1>;
     }
 
-    if (!data.app_highlight) {
-        return <h1>No app found</h1>;
-    }
+    if (
+    typeof data === "object" &&
+    !data.app_highlight
+) {
+    return <h1>No app found</h1>;
+}
 
     const app = data.app_highlight;
 
