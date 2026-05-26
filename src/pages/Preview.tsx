@@ -69,7 +69,7 @@ function Preview() {
                 <h2 className="section-title">Preview</h2>
 
                 <div className="image-row">
-                    {app.images?.slice(0, 8).map((img: string, i: number) => (
+                    {app.images?.slice(0, 6).map((img: string, i: number) => (
                         <img key={i} src={img} className="preview-image" />
                     ))}
                 </div>
