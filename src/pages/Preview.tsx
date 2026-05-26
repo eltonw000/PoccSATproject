@@ -21,17 +21,20 @@ function Preview() {
         api_key: API_KEY,
     }).toString();
 
-    const serpUrl = `${ENDPOINT}?${queryString}`;
+    const serpUrl =
+        `${ENDPOINT}?${queryString}`;
 
     fetch(
-        "https://corsproxy.io/?" +
+        "https://corsproxy.io/?url=" +
             encodeURIComponent(serpUrl)
     )
         .then(async (res) => {
-            const text = await res.text();
+            const text =
+                await res.text();
 
             try {
-                const json = JSON.parse(text);
+                const json =
+                    JSON.parse(text);
 
                 console.log(
                     "API RESULT:",
