@@ -22,7 +22,7 @@ function Preview() {
 
         const url = `${ENDPOINT}?${queryString}`;
 
-        fetch("https://corsproxy.io/?url=" + encodeURIComponent(url))
+        fetch("https://corsproxy.io/?" + encodeURIComponent(url))
             .then((res) => res.json())
             .then((result) => setData(result))
             .catch(() => setData("error"));
