@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
+interface ImageResult {
+    title: string;
+    original: string;
+    source: string;
+}
+interface SerpApiResponse {
+    image_results: ImageResult[];
+}
+
 import "../App.css";
 
 function Preview() {
-    const [data, setData] = useState<any>(null);
-
-    const API_KEY = "9e4073012418234104c8f4f93800513776ad6dcf42555c86734a515381086007";
-    const ENDPOINT = "https://serpapi.com/search";
+    // const [data, setData] = useState<any>(null);
+    const[data, setData] = useState<SerpApiResponse | null>(null);
+    // const API_KEY = "9e4073012418234104c8f4f93800513776ad6dcf42555c86734a515381086007";
+    // const ENDPOINT = "https://serpapi.com/search";
 
     const params = {
         engine: "google_play_games",
@@ -15,18 +24,26 @@ function Preview() {
     };
 
     useEffect(() => {
-        const queryString = new URLSearchParams({
-            ...params,
-            api_key: API_KEY,
-        }).toString();
+        // const queryString = new URLSearchParams({
+        //     ...params,
+        //     api_key: API_KEY,
+        // }).toString();
 
-        const url = `${ENDPOINT}?${queryString}`;
+        // const url = `${ENDPOINT}?${queryString}`;
 
-        fetch("https://corsproxy.io/?" + encodeURIComponent(url))
+        // fetch("https://corsproxy.io/?" + encodeURIComponent(url))
+        //     .then((res) => res.json())
+        //     .then((result) => setData(result))
+        //     .catch(() => setData("error"));
+        const queryString = new URLSearchParams(params).toString()
+        fetch(`/api/preview?${queryString}`)
             .then((res) => res.json())
-            .then((result) => setData(result))
-            .catch(() => setData("error"));
-    }, []);
+            .then((result: SerpApiResponse) => {
+                console.log(result)
+                setData(result)
+            })
+            .catch((err) => console.error("Error:", err))
+    }, [])
 
     if (!data) return <div className="loading">Loading...</div>;
     if (data === "error") return <div className="error">Failed to load</div>;
