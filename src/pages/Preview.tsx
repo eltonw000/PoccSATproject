@@ -6,7 +6,7 @@ interface ImageResult {
 }
 interface SerpApiResponse {
     app_highlight: any;
-    image_results: ImageResult[];
+    organic_results: ImageResult[];
 }
 
 import "../App.css";
