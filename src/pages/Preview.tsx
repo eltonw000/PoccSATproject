@@ -5,6 +5,7 @@ interface ImageResult {
     source: string;
 }
 interface SerpApiResponse {
+    app_highlight: any;
     image_results: ImageResult[];
 }
 
@@ -48,7 +49,7 @@ function Preview() {
     if (!data) return <div className="loading">Loading...</div>;
     // if (data === "error") return <div className="error">Failed to load</div>;
 
-    // const app = data?.app_highlight;
+    const app = data?.app_highlight;
 
     return (
         <div className="container">
