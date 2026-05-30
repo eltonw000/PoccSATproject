@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
-interface ImageResult {
-    title: string;
-    original: string;
-    source: string;
+interface AppHighlight {
+  title: string;
+  thumbnail: string;
+  description: string;
+  rating: number;
+  reviews: number;
+  downloads: string;
+  video: string;
+  link: string;
+  images: string[];
+  author: string;
+
+  content_rating?: {
+      text: string;
+  };
 }
+
 interface SerpApiResponse {
-    app_highlight: any;
-    organic_results: ImageResult[];
+  app_highlight: AppHighlight;
 }
 
 import "../App.css";
@@ -50,6 +61,11 @@ function Preview() {
     // if (data === "error") return <div className="error">Failed to load</div>;
 
     const app = data?.app_highlight;
+
+     if (!app) {
+            return <div>No app found</div>;
+        }
+
 
     return (
         <div className="container">
